@@ -16,6 +16,8 @@ namespace FTR.UI
         [Required]
         public int StatusId { get; set; }
         [Required]
+
+        public string ProjectName { get; set; }
         public int CurrentStep { get; set; }
 
     }

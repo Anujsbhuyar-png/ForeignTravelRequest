@@ -1,0 +1,107 @@
+﻿@* @model IEnumerable<FTR.UI.DashboardViewModel> *@
+@using FTR.UI.Models
+@model IEnumerable<DashboardViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+
+    var userInfo = Model.FirstOrDefault();
+    var userName = userInfo?.EmployeeName ?? "User";
+    var department = userInfo?.Department ?? "N/A";
+    var visaType = userInfo?.VisaType ?? "N/A";
+    var status = userInfo.StatusId;
+}
+
+<div class="card mb-4">
+    <div class="card-body d-flex justify-content-between align-items-center border-opacity-10">
+        <div>
+            <h2 class="card-title">Welcome, @userName</h2>
+            <p class="text-muted">Department: @department</p>
+        </div>
+        <a href="/create-ftr" class="btn btn-dark rounded">Create New FTR</a>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body d-flex justify-content-between align-items-center border-opacity-10">
+        <h3>
+            FTR Status Overview
+        </h3>
+        @* <a href="/create-ftr" class="btn btn-dark rounded">Create New FTR</a> *@
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body d-flex justify-content-between align-items-center border-opacity-10">
+        <h3>
+            Your FTR Requests
+
+        </h3>
+        @* <a href="/create-ftr" class="btn btn-dark rounded">Create New FTR</a> *@
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Personal Details</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>FTR ID</th>
+                    <th>Visa Type</th>
+                    <th>Status</th>
+                    <th>Project Name</th>
+                    <th>Travel Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            @* <td>@item.employeeId</td> *@
+                            @* <td>@item.DasId</td> *@
+                            @* <td>@item.EmployeeName</td> *@
+                            @* <td>@item.Department</td> *@
+                            <td>
+                                @* <a asp-action="Edit" asp-route-id="@item.employeeId" class="btn btn-sm btn-primary">Edit</a> *@
+                                @* <a asp-action="Details" asp-route-id="@item.employeeId" class="btn btn-sm btn-info">Details</a> *@
+                                @* <a asp-action="Delete" asp-route-id="@item.employeeId" class="btn btn-sm btn-danger">Delete</a> *@
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" class="text-center">No records found.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @* @Html.DisplayFor(modelItem => item.VisaType) *@
+            @visaType
+        </td>
+        <td>
+            @* @Html.DisplayFor(modelItem => item.EmployeeName) *@
+			@userName
+        </td>
+        <td>
+            @* @Html.DisplayFor(modelItem => item.StatusId) *@
+			@status
+        </td>
+        <td>
+            @* <a asp-action="Edit" asp-route-id="@item.StatusId">stats</a> *@
+            @* <a asp-action="Details" asp-route-id="@item.statusId">Details</a> | *@
+            @* <a asp-action="Delete" asp-route-id="@item.statusId">Delete</a> *@
+        </td>
+    </tr>
+}
+

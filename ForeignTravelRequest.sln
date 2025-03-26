@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTR.DL", "FTR.DL\FTR.DL.csproj", "{74C6CCF0-EE99-4848-959F-DF5BAF0E2518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTR.BL", "FTR.BL\FTR.BL.csproj", "{6B658FC7-F777-40FE-98C3-49AF684658FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTR.UI", "FTR.UI\FTR.UI.csproj", "{B5C42AA1-81B4-4617-9682-3039CBD6233E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74C6CCF0-EE99-4848-959F-DF5BAF0E2518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C6CCF0-EE99-4848-959F-DF5BAF0E2518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C6CCF0-EE99-4848-959F-DF5BAF0E2518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C6CCF0-EE99-4848-959F-DF5BAF0E2518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B658FC7-F777-40FE-98C3-49AF684658FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B658FC7-F777-40FE-98C3-49AF684658FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B658FC7-F777-40FE-98C3-49AF684658FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B658FC7-F777-40FE-98C3-49AF684658FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C42AA1-81B4-4617-9682-3039CBD6233E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C42AA1-81B4-4617-9682-3039CBD6233E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C42AA1-81B4-4617-9682-3039CBD6233E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C42AA1-81B4-4617-9682-3039CBD6233E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

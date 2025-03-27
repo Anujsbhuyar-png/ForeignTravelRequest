@@ -8,14 +8,11 @@ namespace FTR.UI
 
         public string EmployeeName { get; set; }
         public string Department { get; set; }
-
-        [Key]
         public int FtrId { get; set; }
-        [Required]
+        
         public string VisaType { get; set; }
-        [Required]
         public int StatusId { get; set; }
-        [Required]
+        public string StatusName { get; set; }
 
         public string ProjectName { get; set; }
         public int CurrentStep { get; set; }

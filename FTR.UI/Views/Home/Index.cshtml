@@ -10,9 +10,26 @@
     var department = userInfo?.Department ?? "N/A";
     var ftrId = userInfo.FtrId;
     var visaType = userInfo?.VisaType ?? "N/A";
-	var projectName = userInfo?.ProjectName ?? "N/A";
+    var projectName = userInfo?.ProjectName ?? "N/A";
     var status = userInfo.StatusId;
+    var statusName = userInfo.StatusName;
+
+    string GetStatusColor(string statusName)
+    {
+        switch (statusName.ToLower())
+        {
+            case "approved":
+                return "badge text-bg-success";
+            case "pending":
+                return "bg-warning text-dark badge";
+            case "rejected":
+                return "badge text-bg-danger";
+            default:
+                return "bg-secondary text-white badge";
+        }
+    }
 }
+
 
 <div class="card mb-4">
     <div class="card-body d-flex justify-content-between align-items-center border-opacity-10">
@@ -25,15 +42,17 @@
 </div>
 <div class="card mb-4">
     <div class="card-header">
-        <h3>Your FTR Requests</h3>
+        <h3>Status Overview</h3>
     </div>
     <div>
         @if (Model != null && Model.Any())
         {
             foreach (var item in Model)
             {
-                <div>
-                    @item.StatusId
+                <div class="">
+                    <div class="p-2 m-2 rounded @GetStatusColor(item.StatusName)">
+                        @item.StatusName
+                    </div>
                 </div>
             }
         }
@@ -63,8 +82,8 @@
                         <tr>
 							<td>@item.FtrId</td>
 							<td>@item.VisaType</td>
-							<td>@item.StatusId</td>
-							<td>@item.Department</td
+                            <td class="p-2 m-2   rounded @GetStatusColor(item.StatusName)">@item.StatusName</td>
+							<td>@item.Department</td>
                             <td>
                                 
                                 @* <a asp-action="Edit" asp-route-id="@item.employeeId" class="btn btn-sm btn-primary">Edit</a> *@

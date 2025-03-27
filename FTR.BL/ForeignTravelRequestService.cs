@@ -24,6 +24,7 @@ namespace FTR.BL
         public ForeignTravelRequest GetForeignTravelRequestById(int id)
         {
             throw new NotImplementedException();
+
         }
         public void AddForeignTravelRequest(ForeignTravelRequest foreignTravelRequest)
         {

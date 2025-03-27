@@ -21,6 +21,7 @@ namespace FTR.UI.Controllers
         {
             var dashboardViewModels = await _context.ForeignTravelRequest
                 .Include(f => f.Employee)
+                .Include(f => f.Status)
                 .Select(f => new DashboardViewModel
                 {
                     EmployeeName = f.Employee.EmployeeName,
@@ -28,6 +29,7 @@ namespace FTR.UI.Controllers
                     FtrId = f.FtrId,
                     VisaType = f.VisaType,
                     StatusId = f.StatusId,
+                    StatusName = f.Status.statusName,
                     CurrentStep = f.CurrentStep
                 })
                 .ToListAsync();

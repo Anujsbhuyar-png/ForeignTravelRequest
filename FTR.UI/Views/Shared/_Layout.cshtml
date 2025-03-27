@@ -1,77 +1,98 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FTR.UI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FTR.UI.styles.css" asp-append-version="true" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - FTR.UI</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/FTR.UI.styles.css" asp-append-version="true" />
 </head>
 <body>
 
-    <div class="d-flex" id="wrapper">
-        <nav class="sidebar bg-light border-end">
-            @* <div class="sidebar border-end"> *@
-                <div class="sidebar-header border-bottom">
-                <h4 class="sidebar-brand">Foreign Travel Request</h4>
-                </div>
-                <div>
-                    <ul class="sidebar-nav"">
-                        @* <li>Nav Title </li> *@
-                        @* <li class="nav-title">Nav Title</li> *@
-                        <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="nav-icon cil-speedometer"></i> With badge
-                                <span class="badge bg-primary ms-auto">NEW</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="nav-icon cil-speedometer"></i> With badge
-                                <span class="badge bg-primary ms-auto">NEW</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            @* </div> *@
-        </nav>
-        <div class="container-fluid">
-            <main role="main" class="pb-3">
-                    @RenderBody()
-            </main>
-        </div>
-    </div>
-    @* <header> *@
-    @*     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"> *@
-    @*         <div class="container-fluid"> *@
-    @*             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FTR.UI</a> *@
-    @*             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" *@
-    @*                     aria-expanded="false" aria-label="Toggle navigation"> *@
-    @*                 <span class="navbar-toggler-icon"></span> *@
-    @*             </button> *@
-    @*             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
-    @*                 <ul class="navbar-nav flex-grow-1"> *@
-    @*                     <li class="nav-item"> *@
-    @*                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
-    @*                     </li> *@
-    @*                     <li class="nav-item"> *@
-    @*                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
-    @*                     </li> *@
-    @*                     <li class="nav-item"> *@
-    @*                         <a class="nav-link text-dark" asp-area="" asp-controller="PersonalDetails" asp-action="Details">PersonalDetails</a> *@
-    @*                     </li> *@
-    @*                 </ul> *@
-				@* </div> *@
-    @*     </nav> *@
-    @* </header> *@
-    
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+	<div class="d-flex" id="wrapper">
+		<nav class="sidebar bg-light border-end">
+			<div class="sidebar-header border-bottom mx-2 my-4">
+				<h4 class="sidebar-brand">Foreign Travel Request</h4>
+			</div>
+			<div>
+				<ul class="sidebar-nav list-unstyled">
+					<li>
+						<a class="d-flex align-items-center p-2 rounded bg-light text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+							<div class="mr-3">
+								<svg width="27px" height="27px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							</div>
+							<span>Home</span>
+						</a>
+					</li>
+					<li>
+						<a class="d-flex align-items-center p-2 rounded bg-light text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+							<div class="mr-3">
+								<svg width="27px" height="27px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							</div>
+							<span>Create FTR</span>
+						</a>
+					</li>
+					<li>
+						<a class="d-flex align-items-center p-2 rounded bg-light text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+							<div class="mr-3">
+								<svg width="27px" height="27px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							</div>
+							<span>Document Upload</span>
+						</a>
+					</li>
+					<li>
+						<a class="d-flex align-items-center p-2 rounded bg-light text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+							<div class="mr-3">
+								<svg width="27px" height="27px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							</div>
+							<span>Visa Status</span>
+						</a>
+					</li>
+					<li>
+						<a class="d-flex align-items-center p-2 rounded bg-light text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+							<div class="mr-3">
+								<svg width="27px" height="27px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+							</div>
+							<span>Finance</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<main role="main" class="pb-3">
+				@RenderBody()
+			</main>
+		</div>
+	</div>
+	@* <header> *@
+	@*     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"> *@
+	@*         <div class="container-fluid"> *@
+	@*             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FTR.UI</a> *@
+	@*             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" *@
+	@*                     aria-expanded="false" aria-label="Toggle navigation"> *@
+	@*                 <span class="navbar-toggler-icon"></span> *@
+	@*             </button> *@
+	@*             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"> *@
+	@*                 <ul class="navbar-nav flex-grow-1"> *@
+	@*                     <li class="nav-item"> *@
+	@*                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> *@
+	@*                     </li> *@
+	@*                     <li class="nav-item"> *@
+	@*                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+	@*                     </li> *@
+	@*                     <li class="nav-item"> *@
+	@*                         <a class="nav-link text-dark" asp-area="" asp-controller="PersonalDetails" asp-action="Details">PersonalDetails</a> *@
+	@*                     </li> *@
+	@*                 </ul> *@
+	@* </div> *@
+	@*     </nav> *@
+	@* </header> *@
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

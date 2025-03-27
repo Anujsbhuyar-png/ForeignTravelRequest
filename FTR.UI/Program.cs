@@ -11,6 +11,7 @@ builder.Services.AddScoped<IPersonalDetailsRepo, PersonalDetailsRepo>();
 builder.Services.AddScoped<IPersonalDetailsService, PersonalDetailsService>();
 builder.Services.AddScoped<IForeignTravelRequestRepo, ForeignTravelRequestRepo>();
 builder.Services.AddScoped<IForeignTravelRequestService, ForeignTravelRequestService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddServerSideBlazor();

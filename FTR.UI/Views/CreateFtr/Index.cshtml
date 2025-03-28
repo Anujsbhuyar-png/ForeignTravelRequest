@@ -1,0 +1,157 @@
+﻿@page
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Foreign Travel Request (FTR)</h2>
+        <button class="btn btn-secondary">Save Draft</button>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <ul class="nav nav-tabs" id="ftrTabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#employee-info">Employee Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#travel-info">Travel Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#passport-details">Passport Details</a>
+        </li>
+    </ul>
+
+    <div class="tab-content mt-3">
+        <!-- Employee Info Tab -->
+        <div class="tab-pane fade show active" id="employee-info">
+            <div class="card">
+                <div class="card-header">Employee Information</div>
+                <div class="card-body row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">DAS ID</label>
+                        <input type="text" class="form-control" value="A93****" disabled>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select">
+                            <option selected>Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Department</label>
+                        <input type="text" class="form-control" placeholder="Software Engineering">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Designation</label>
+                        <input type="text" class="form-control" placeholder="Senior Developer">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="johndoe@example.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mobile Number</label>
+                        <input type="text" class="form-control" placeholder="+1 234 567 8901">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Nationality</label>
+                        <input type="text" class="form-control" placeholder="USA">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" placeholder="123 Main St, Apt 4B"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Travel Info Tab -->
+        <div class="tab-pane fade" id="travel-info">
+            <div class="card">
+                <div class="card-header">Travel Information</div>
+                <div class="card-body row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Country of Visit</label>
+                        <select class="form-select">
+                            <option selected>Select country</option>
+                            <option value="us">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="ca">Canada</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Type of Travel</label>
+                        <select class="form-select">
+                            <option selected>Select type</option>
+                            <option value="business">Business</option>
+                            <option value="personal">Personal</option>
+                            <option value="relocation">Relocation</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Travel Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Return Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Reason for Trip</label>
+                        <textarea class="form-control" placeholder="Describe the purpose of your travel"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Passport Details Tab -->
+        <div class="tab-pane fade" id="passport-details">
+            <div class="card">
+                <div class="card-header">Passport Details</div>
+                <div class="card-body row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Passport Number</label>
+                        <input type="text" class="form-control" placeholder="A1234567">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Place of Issue</label>
+                        <input type="text" class="form-control" placeholder="New York">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Issue</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Expiry</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-outline-secondary me-2">Cancel</button>
+                <button class="btn btn-primary">Submit FTR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Tabs Script -->
+<script>
+    var triggerTabList = [].slice.call(document.querySelectorAll('#ftrTabs a'))
+    triggerTabList.forEach(function (triggerEl) {
+        var tabTrigger = new bootstrap.Tab(triggerEl)
+        triggerEl.addEventListener('click', function (event) {
+            event.preventDefault()
+            tabTrigger.show()
+        })
+    })
+</script>

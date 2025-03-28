@@ -1,0 +1,100 @@
+﻿@page
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Document Upload</h2>
+        <button class="btn btn-primary">Submit All Documents</button>
+    </div>
+
+    <div class="alert alert-info d-flex align-items-center">
+        <i class="bi bi-exclamation-circle me-2"></i>
+        <div>
+            Please upload all required documents in PDF or image format. All documents must be clearly legible.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Required Documents for FTR001</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                @{
+                    var documents = new List<dynamic>
+                {
+                new { Name = "Payslips (Last 3 months)", Status = "uploaded" },
+                new { Name = "Job Description", Status = "approved" },
+                new { Name = "Resume/CV", Status = "pending" },
+                new { Name = "Passport Copy", Status = "rejected" },
+                new { Name = "Transfer Letter (if applicable)", Status = "not-uploaded" },
+                new { Name = "Project Code Document", Status = "not-uploaded" },
+                new { Name = "Data Protection Consent", Status = "not-uploaded" },
+                new { Name = "Signed Assignment Letter", Status = "not-uploaded" }
+                };
+                }
+
+                @foreach (var doc in documents)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="p-3 border rounded @(doc.Status == "rejected" ? "border-danger bg-light" : "border-secondary")">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <i class="@(GetStatusIcon(doc.Status)) me-2"></i>
+                                    <span>@doc.Name</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge @(GetStatusBadge(doc.Status))">@GetStatusText(doc.Status)</span>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        @(doc.Status == "not-uploaded" ? "Upload" : "Re-upload")
+                                    </button>
+                                </div>
+                            </div>
+                            @if (doc.Status == "rejected")
+                            {
+                                <p class="text-danger mt-2">Document rejected: Please provide a clearer copy.</p>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusText(string status)
+    {
+        return status switch
+        {
+            "uploaded" => "Uploaded",
+            "approved" => "Approved",
+            "pending" => "Under Review",
+            "rejected" => "Rejected",
+            _ => "Not Uploaded"
+        };
+    }
+
+    string GetStatusBadge(string status)
+    {
+        return status switch
+        {
+            "uploaded" => "bg-primary",
+            "approved" => "bg-success",
+            "pending" => "bg-warning",
+            "rejected" => "bg-danger",
+            _ => "bg-secondary"
+        };
+    }
+
+    string GetStatusIcon(string status)
+    {
+        return status switch
+        {
+            "uploaded" => "bi bi-upload text-primary",
+            "approved" => "bi bi-check-circle text-success",
+            "pending" => "bi bi-exclamation-circle text-warning",
+            "rejected" => "bi bi-x-circle text-danger",
+            _ => "bi bi-upload text-secondary"
+        };
+    }
+}

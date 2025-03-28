@@ -1,0 +1,250 @@
+﻿@page
+@{
+    // Mock data embedded directly within the Razor page
+    var visaApplication = new
+    {
+        Id = "FTR001",
+        VisaType = "Work Permit",
+        Country = "Germany",
+        Status = "In Progress",
+        Progress = 40,
+        AppointmentDate = "2025-04-10",
+        AppointmentTime = "10:30 AM",
+        AppointmentLocation = "German Embassy, Downtown",
+        Documents = new[] {
+            new { Name = "Company Cover Letter", Uploaded = true, Date = "2025-03-15" },
+            new { Name = "Travel Itinerary", Uploaded = true, Date = "2025-03-15" },
+            new { Name = "Invite Letter", Uploaded = false, Date = (string)null },
+            new { Name = "Travel Insurance", Uploaded = false, Date = (string)null }
+        },
+        Timeline = new[] {
+            new { Step = "FTR Submitted", Date = "2025-03-01", Completed = true },
+            new { Step = "Line Manager Approval", Date = "2025-03-03", Completed = true },
+            new { Step = "Delivery Manager Approval", Date = "2025-03-05", Completed = true },
+            new { Step = "Documents Uploaded", Date = "2025-03-08", Completed = true },
+            new { Step = "Visa Team Review", Date = "2025-03-12", Completed = true },
+            new { Step = "Pre-appointment Docs", Date = "2025-03-15", Completed = false },
+            new { Step = "Visa Appointment", Date = "2025-04-10", Completed = false },
+            new { Step = "Visa Issuance", Date = (string)null, Completed = false },
+            new { Step = "Finance Approval", Date = (string)null, Completed = false },
+            new { Step = "Travel Arrangement", Date = (string)null, Completed = false }
+        }
+    };
+}
+
+<div class="container my-5">
+    <h1 class="mb-4">Visa Status</h1>
+
+    <div class="d-flex justify-content-between mb-4">
+        <h2 class="h4">Visa Application <strong>@visaApplication.Id</strong></h2>
+        <div>
+            <span class="badge bg-primary">@visaApplication.VisaType</span>
+            <span class="badge bg-warning">@visaApplication.Status</span>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title">Visa Application FTR001</h5>
+            <p class="card-text">Travel to @visaApplication.Country</p>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                    <span>Application Progress</span>
+                    <span>@visaApplication.Progress%</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @visaApplication.Progress%" aria-valuenow="@visaApplication.Progress" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center p-3 bg-light rounded">
+                        <i class="bi bi-calendar3 mr-2"></i>
+                        <div>
+                            <div class="text-muted">Appointment Date</div>
+                            <div>@visaApplication.AppointmentDate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center p-3 bg-light rounded">
+                        <i class="bi bi-clock mr-2"></i>
+                        <div>
+                            <div class="text-muted">Appointment Time</div>
+                            <div>@visaApplication.AppointmentTime</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs mb-4" id="visaTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="timeline-tab" data-bs-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="true">Application Timeline</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="documents-tab" data-bs-toggle="tab" href="#documents" role="tab" aria-controls="documents" aria-selected="false">Pre-appointment Documents</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="upload-visa-tab" data-bs-toggle="tab" href="#upload-visa" role="tab" aria-controls="upload-visa" aria-selected="false">Upload Visa Copy</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="visaTabsContent">
+        <!-- Timeline Tab -->
+        <div class="tab-pane fade show active" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Application Progress</h5>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        @foreach (var item in visaApplication.Timeline)
+                        {
+                            <div class="timeline-item @((item.Completed ? "completed" : "pending"))">
+                                <div class="timeline-icon">
+                                    @if (item.Completed)
+                                    {
+                                        <svg viewBox="0 0 117 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title></title> <desc></desc> <defs></defs> <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"> <g fill-rule="nonzero" id="correct"> <path d="M34.5,55.1 C32.9,53.5 30.3,53.5 28.7,55.1 C27.1,56.7 27.1,59.3 28.7,60.9 L47.6,79.8 C48.4,80.6 49.4,81 50.5,81 C50.6,81 50.6,81 50.7,81 C51.8,80.9 52.9,80.4 53.7,79.5 L101,22.8 C102.4,21.1 102.2,18.5 100.5,17 C98.8,15.6 96.2,15.8 94.7,17.5 L50.2,70.8 L34.5,55.1 Z" fill="#17AB13" id="Shape"></path> <path d="M89.1,9.3 C66.1,-5.1 36.6,-1.7 17.4,17.5 C-5.2,40.1 -5.2,77 17.4,99.6 C28.7,110.9 43.6,116.6 58.4,116.6 C73.2,116.6 88.1,110.9 99.4,99.6 C118.7,80.3 122,50.7 107.5,27.7 C106.3,25.8 103.8,25.2 101.9,26.4 C100,27.6 99.4,30.1 100.6,32 C113.1,51.8 110.2,77.2 93.6,93.8 C74.2,113.2 42.5,113.2 23.1,93.8 C3.7,74.4 3.7,42.7 23.1,23.3 C39.7,6.8 65,3.9 84.8,16.2 C86.7,17.4 89.2,16.8 90.4,14.9 C91.6,13 91,10.5 89.1,9.3 Z" fill="#4A4A4A" id="Shape"></path> </g> </g> </g></svg>
+
+                                    }
+                                    else
+                                    {
+                                        <i class="bi bi-circle text-secondary"></i>
+                                    }
+                                </div>
+                                <div class="timeline-content">
+                                    <h6 class="fw-bold">@item.Step</h6>
+                                    <p class="text-muted">@item.Date ?? "Pending"</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Tab -->
+        <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Pre-appointment Documents</h5>
+                    <p class="card-text">Documents to be uploaded by visa team</p>
+                </div>
+                <div class="card-body">
+                    @foreach (var doc in visaApplication.Documents)
+                    {
+                        <div class="d-flex justify-content-between align-items-center mb-3 p-3 border rounded">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-file-earmark-text mr-2"></i>
+                                <span>@doc.Name</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                @if (doc.Uploaded)
+                                {
+                                    <span class="badge bg-success">Uploaded</span>
+                                    <span class="text-muted ms-2">@doc.Date</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Pending</span>
+                                    <button class="btn btn-outline-primary btn-sm ms-2">
+                                        <i class="bi bi-paperclip"></i> Attach
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Upload Visa Tab -->
+        <div class="tab-pane fade" id="upload-visa" role="tabpanel" aria-labelledby="upload-visa-tab">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Upload Visa Copy</h5>
+                    <p class="card-text">Upload your approved visa copy after embassy processing</p>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning d-flex align-items-center mb-4">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <span>Your appointment is scheduled. Please upload your visa copy after approval from the embassy.</span>
+                    </div>
+
+                    <div class="border border-dashed p-5 text-center mb-4">
+                        <i class="bi bi-upload h1 text-muted mb-3"></i>
+                        <h4 class="mb-2">Upload Visa Copy</h4>
+                        <p class="text-muted mb-3">Drag and drop your visa document or click to browse</p>
+                        <button class="btn btn-primary">Select Document</button>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-secondary" disabled>Submit Visa Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add custom styles for the timeline -->
+<style>
+    .timeline {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .timeline-item {
+        display: flex;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .timeline-icon {
+        position: absolute;
+        left: -10px;
+        top: 0;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border: 3px solid #ddd;
+        border-radius: 50%;
+        color: #6c757d;
+    }
+
+    /* .timeline-item.completed .timeline-icon { */
+    /*     background-color: #28a745; */
+    /*     border-color: #28a745; */
+    /*     color: #fff; */
+    /* } */
+
+    /* .timeline-item.pending .timeline-icon { */
+    /*     background-color: #f8f9fa; */
+    /*     border-color: #6c757d; */
+    /*     color: #6c757d; */
+    /* } */
+
+    .timeline-content {
+        padding-left: 40px;
+        /* border-left: 2px solid #ddd; */
+        margin-left: 10px;
+    }
+
+    .timeline-item h6 {
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .timeline-item p {
+        margin: 0;
+    }
+</style>
